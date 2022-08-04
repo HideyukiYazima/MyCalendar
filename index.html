@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendar</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <table>
@@ -26,18 +27,9 @@
     </thead>
     <tbody>
       <tr> <!-- 日付 -->
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-      </tr>
-      <tr> <!-- 日付 -->
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
+        <td class="disabled">1</td>
+        <td class="disabled">1</td>
+        <td class="disabled">1</td>
         <td>1</td>
         <td>1</td>
         <td>1</td>
@@ -55,11 +47,20 @@
       <tr> <!-- 日付 -->
         <td>1</td>
         <td>1</td>
+        <td class="today">1</td>
         <td>1</td>
         <td>1</td>
         <td>1</td>
         <td>1</td>
+      </tr>
+      <tr> <!-- 日付 -->
         <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td class="disabled">1</td>
+        <td class="disabled">1</td>
+        <td class="disabled">1</td>
       </tr>
     </tbody>
     <tfoot>
@@ -68,5 +69,7 @@
       </tr>
     </tfoot>
   </table>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
