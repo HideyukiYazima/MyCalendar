@@ -67,8 +67,34 @@ console.clear();
       ...getCalendarBody(),
       ...getCalendarTail(),
     ];
+    const weeks = [];
+    const weeksCount = dates.length / 7; // 一週間は7日
 
-    console.log(dates);
+    for (let i = 0; i < weeksCount; i++) {
+      weeks.push(dates.splice(0,7)); // 先頭から7個分を抽出する
+    }
+
+    weeks.forEach(week => {
+      const tr = document.createElement('tr');
+      week.forEach(date => {
+        const td = document.createElement('td');
+        
+        td.textContent = date.date; // これで日付が入る
+        if (date.isToday) {
+          td.classList.add('today');
+        }
+        if (date.isDisabled) {
+          td.classList.add('disabled');
+        }
+
+        tr.appendChild(td);
+      });
+      document.querySelector('tbody').appendChild(tr);
+    });
+    //
+
+    // console.log(dates);
+    // console.log(weeks);
   }
 
   createCalendar();
