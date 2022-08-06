@@ -3,8 +3,8 @@
 console.clear();
 
 {
-  const year = 2020;
-  const month = 4; // 5月は4で表現することに注意
+  let year = 2020;
+  let month = 4; // 5月は4で表現することに注意
 
   //前月分の日付を取得するための配列
   function getCalendarHead() {
@@ -96,6 +96,29 @@ console.clear();
     // console.log(dates);
     // console.log(weeks);
   }
+
+  // 月の前後移動機能を実装
+  // prev設定
+  document.getElementById('prev').addEventListener('click', () => {
+    month--;
+    if (month < 0) { // 年を跨ぐのでyearから1引いて12月(11)に戻すことも必要
+      year--;
+      month = 11;
+    }
+
+    createCalendar();
+    });
+  
+  // next
+  document.getElementById('next').addEventListener('click', () => {
+    month++;
+    if (month > 11) { // 12月を超えるのは11より大きくなったらと書く
+      year++;
+      month = 0; // 1月に戻すにはここを0にする
+    }
+
+    createCalendar();
+    });
 
   createCalendar();
 
