@@ -61,17 +61,20 @@ console.clear();
   //
 
   // 作成したカレンダーの日付を統合し、描画する配列
-  function createCalendar() {
-    
+  function clearCalendar() {
     const tbody = document.querySelector('tbody'); // クリックするたびにカレンダーが増えるのを回避する配列
-
+  
     while (tbody.firstChild) {
       tbody.removeChild(tbody.firstChild);
     }
+  }
 
+  function renderTitle() {
     const title =`${year}/${String(month + 1).padStart(2, '0')}`; // 月の切り替えをタイトル部分に反映させる配列
     document.getElementById('title').textContent = title;
+  }
 
+  function renderWeeks() {
     const dates = [
       ...getCalendarHead(),
       ...getCalendarBody(),
@@ -106,6 +109,13 @@ console.clear();
     // console.log(dates);
     // console.log(weeks);
   }
+
+  function createCalendar() {
+    clearCalendar();
+    renderTitle();
+    renderWeeks();
+  }
+  //
 
   // 月の前後移動機能を実装
   // prev設定
