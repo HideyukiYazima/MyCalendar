@@ -3,8 +3,12 @@
 console.clear();
 
 {
-  let year = 2020;
-  let month = 4; // 5月は4で表現することに注意
+  // このコードで組むと今現在リアルタイムの日付設定となる
+  const today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth();
+  //
+  // let month = 4; // 5月は4で表現することに注意
 
   //前月分の日付を取得するための配列
   function getCalendarHead() {
@@ -30,7 +34,7 @@ console.clear();
 
   function getCalendarBody() {
     const dates = []; // javascriptではdate: 日付、day: 曜日となっていることに注意
-    const lastDate = new Date(year, month + 1, 0).getDate(); // 末日は翌月1日の１日前という配列を使う
+    const lastDate = new Date(year, month + 1, 0).getDate(); // 末日は翌月1日の１日前というコードを使う
 
     for (let i = 1; i <= lastDate; i++) {
       dates.push({
@@ -39,6 +43,12 @@ console.clear();
         isDisabled: false,
       });
     }
+
+    // 今日の日付を太字にするコード
+    if (year === today.getFullYear() && month === today.getMonth()) {
+      dates[today.getDate() - 1].isToday = true; 
+    }
+    //
 
     return dates;
   }
@@ -136,6 +146,15 @@ console.clear();
       year++;
       month = 0; // 1月に戻すにはここを0にする
     }
+
+    createCalendar();
+    });
+
+
+  // Todayを押すと今日の日付にショートカットできるように設定する
+  document.getElementById('today').addEventListener('click', () => {
+    year = today.getFullYear();
+    month = today.getMonth();
 
     createCalendar();
     });
